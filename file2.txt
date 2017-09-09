@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 hi this is the pair file
+=======
+Fix2
+>>>>>>> 66d51609c191339425afc7ff4431669b8fc28e3e
