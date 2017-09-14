@@ -1,0 +1,151 @@
+https://guides.github.com/activities/hello-world/
+
+https://git-for-windows.github.io/
+https://github.com/scrtips/time-tracker
+ git config --global --list
+
+ git config --global user.name "Sreekanth"
+ git config --global user.email "sreekanth.pusapati@gmail.com"
+
+ $ git config --global --list
+user.name=Sreekanth
+user.email=sreekanth.pusapati@gmail.com
+
+git config --global core.editor vim
+git config --global help.autocorrect 1
+
+git config --global color.ui auto
+git config --global core.autocrlf true         >> character turn line to new line feeds   >> can be used in windows
+
+git config --global core.autocrlf input        >> can be used in linux or mac
+
+git config --global unset core.autocrlf
+
+git init			>> To initialize a local repository
+git status			>> To Get the status of the uncomitted files
+git add <filename>  >> To Add files to staging area
+git commit			>> To commit the files to repository
+git log 			>> To get the logs of previous commits / etc....
+
+git add -u 			>> Adds all modified files to the staging area
+git add -u only adds updated files to the staging aread, if files are not updated, but just created, then nothing will be added
+
+git add -A 			>> Adds all the files including the untracked files to the staging area, even the ones which are not updated.
+
+git commit -m 		>> Can provide the message directly in line rather than opening the file 
+
+git diff xxxxxx yyyyyy >> gives the difference of the files what content was updated, xxxxxx & yyyyyy are the starting 6 chars of the shaw code
+HEAD is the latest commit & HEAD~1 is the last but one commit
+git diff HEAD~1 HEAD >> same as using Shaw Hash codes
+If nothing is specified , it assumes that you are referring to HEAD commit , so   git diff HEAD~1.. is also same
+
+If any file in the repository has been modified or deleted, GIT knows that.
+
+If any file in the repository has been moved to another file, then the GIT observes the contents of the files when added to staging area and observes that a rename operation has been performed.
+
+git checkout -f file1.txt  >> undo changes made to the repository when the files are in staging area, either recover the file or remove the file.
+
+git reset --hard   			>> This is used to undo the last changes done to the repository
+git reset --soft HEAD~1     >> To undo the last but one chages done for the repository, the files are sent back to the staging area and files can be modified
+
+git reset --hard HEAD~1     >> To remove the last commit and even removes the files from staging area, different to that of the soft reset
+
+
+git clean -n  >> Tells us that the working files which are uncomitted would be removed
+git clean -f  >> Removes all the working files which are uncomitted.
+git clean -f <file_name.txt> >> Removes the file_name.txt working file 
+
+.gitignore		>> This is the file which is used to save the details of the files / directories to include to the ignore list from being read by git, example like log files, or log folder or binaries.
+
+
+git clone https://github.com/jquery/jquery.git   >> clones the githut repository to local repository
+
+git log --oneline    >> gives one liner information for the logs of previous commits
+git log --oneline --graph  >> gives graphical view of pulls / commits made to the repository
+
+git shortlog   >> Gives author info and number of commits they have made
+git shortlog -sne >> -s option for summary, n option for numerically decreasing order of the commits made, e option for users email
+
+git show HEAD   >> shows the latest change made to the repository
+
+git remote -v >> shows the pull & fetch URL for the remote repository
+
+git protocols
+*************
+http  (80) / https (443) >> Password for auth , firewall friendly    >>https://github.com/jquery/jquery.git
+git (9418)  >> Read only , Anonymous only						>> git://github.com/jquery/jquery.git
+ssh (22)    >> Read-write, SSh Keys for auth					>> git@github.com:jquery/jquery.git
+file (n/a)  >> Read-write , only Local operations.   			>> /Users/Sree/code/jquery
+
+cat .git/config >> shows the remote & branch details 
+
+git branch  >> gives us the local branches available
+
+git branch -r  >> displays remote branches
+
+git tag   >> stable points in the codebase  , like 1.2, 1.2.1 , 1.3, ......
+
+ git remote add origin https://gitbub.com/JamesKovacs/GitFundamentals.git   >> adds a remote name "origin" (any arbitrary name) and points to the URL where to fetch the data from
+ 
+ git remote rm origin   >> removes "origin" remote 
+ 
+ git fetch  >> fetches the data from the default remote
+ git fetch origin   >> fetches the data from the remote specified by name "origin" 
+ 
+ git log origin/master   >> get the logs from the remote "origin"
+ git merge origin/master  >> merges from the remote "origin/master" to "master"
+ 
+ git branch -r  	>> gives the branch from which merge was done, ex: origin/master
+ 
+ git fetch; git merge origin/master   >> This is equivalent to git pull;
+ This can also be done by :    git branch --set-upstream master origin/master
+ 
+ git pull;
+ 
+
+
+
+ ssh-keygen -t rsa -b 4096 -C "sreekanth.pusapati@gmail.com"   >> generates public key to push to the GIT repository
+ Your identification has been saved in /c/Users/sreekanth/.ssh/id_rsa
+Your public key has been saved in /c/Users/sreekanth/.ssh/id_rsa.pub
+
+git push -u origin master  >> to push the latest files in Staging area to the GIT repository
+
+****************** SSH key generation *****************************
+https://help.github.com/articles/connecting-to-github-with-ssh/
+https://help.github.com/articles/checking-for-existing-ssh-keys/
+https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+file:///C:/Devops%20installations/Git/mingw64/share/doc/git-doc/git-tag.html
+********************************************************************
+
+git tag v1.0  >> tags the last commit with tag name as v1.0
+git tag -a V1.0_with_message >> tags with annotation and we can provide a message for readability >> git tag -am "This is V1.0" v1.0_with_message 
+git tag -s v1.0_signed  >> tags with signed option, it is used to notify users that this is signed & verified commit;
+git tag -v v1.0_signed  >> used to verify the tag if it is secured or not.
+git push --tags  >> pushes the tags to GIT repository
+******************** GPG Key Generation ****************************
+https://help.github.com/articles/signing-commits-with-gpg/
+https://help.github.com/articles/checking-for-existing-gpg-keys/
+https://help.github.com/articles/generating-a-new-gpg-key/
+https://stackoverflow.com/questions/36810467/git-commit-signing-failed-secret-key-not-available
+https://www.gnupg.org/download/
+
+********************************************************************
+
+$ gpg --list-secret-keys --keyid-format LONG
+/c/Users/sreekanth/.gnupg/secring.gpg
+-------------------------------------
+sec   4096R/7AF93A4CEF11491C 2017-09-13
+uid                          sreekanth pusapati <sreekanth.pusapati@gmail.com>
+ssb   4096R/AEAECE398255B113 2017-09-13
+
+**********************************************************************
+You need to configure the secret key before using it.
+
+git config user.signingkey 35F5FFB2
+Or global if you are going to use the same key for every repository.
+
+git config --global user.signingkey 35F5FFB2
+Source: https://git-scm.com/book/es/v2/Git-Tools-Signing-Your-Work
+***********************************************************************
