@@ -17,3 +17,5 @@ Feature2 changes
 This is modified file to push the file to my new GitFundamentals repository 
 after deleting the jquery old repository
 testing
+
+Deleted the jquery folder
